@@ -57,3 +57,38 @@ def test_friction_factor_rejects_invalid_method():
 def test_pump_efficiency_must_be_between_zero_and_one():
     with pytest.raises(ValueError, match="efficiency"):
         pump_power(1000.0, 0.1, 1.2)
+
+
+def test_auto_method_uses_laminar_value_at_upper_laminar_boundary():
+    assert darcy_friction_factor(2300.0) == pytest.approx(64.0 / 2300.0)
+
+
+def test_auto_method_accepts_lower_turbulent_boundary():
+    result = darcy_friction_factor(4000.0)
+    assert math.isfinite(result)
+    assert result > 0.0
+
+
+def test_colebrook_solver_handles_hydraulically_smooth_pipe():
+    result = darcy_friction_factor(100000.0, 0.0, method="colebrook")
+    assert result == pytest.approx(0.0180, rel=0.02)
+
+
+def test_zero_velocity_gives_zero_reynolds_number():
+    assert reynolds_number(1000.0, 0.0, 0.1, 0.001) == 0.0
+
+
+def test_zero_flow_gives_zero_pump_power():
+    result = pump_power(50000.0, 0.0, 0.75)
+    assert result.hydraulic_power_w == 0.0
+    assert result.shaft_power_w == 0.0
+
+
+def test_friction_factor_rejects_nonpositive_iteration_limit():
+    with pytest.raises(ValueError, match="max_iterations"):
+        darcy_friction_factor(10000.0, max_iterations=0)
+
+
+def test_friction_factor_rejects_negative_relative_roughness():
+    with pytest.raises(ValueError, match="relative_roughness"):
+        darcy_friction_factor(10000.0, relative_roughness=-0.01)
