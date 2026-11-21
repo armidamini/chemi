@@ -2,7 +2,7 @@
 
 ## Automated tests
 
-The project uses pytest and GitHub Actions. The workflow tests Python 3.10, 3.11, 3.12, and 3.13 on pushes and pull requests.
+The project uses pytest and GitHub Actions. The workflow tests Python 3.10, 3.11, 3.12, and 3.13 on pushes and pull requests, and builds both a source distribution and a wheel.
 
 Run locally:
 
