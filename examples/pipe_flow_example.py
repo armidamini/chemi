@@ -4,6 +4,8 @@ Run from the repository root with:
     python examples/pipe_flow_example.py
 """
 
+import math
+
 from chemeng_open_tools import (
     darcy_friction_factor,
     darcy_weisbach_pressure_drop,
@@ -18,7 +20,7 @@ velocity = 1.5                  # m/s
 diameter = 0.05                 # m
 length = 100.0                  # m
 absolute_roughness = 1.0e-5     # m
-flow_rate = 0.002945            # m^3/s, based on area * velocity
+flow_rate = math.pi * diameter**2 / 4.0 * velocity  # m^3/s
 
 re = reynolds_number(density, velocity, diameter, dynamic_viscosity)
 relative_roughness = absolute_roughness / diameter
