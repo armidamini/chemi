@@ -21,14 +21,18 @@ A small open-source Python toolkit for transparent introductory chemical-enginee
 
 ## Installation
 
-Requires Python 3.10 or newer.
+Requires Python 3.10 or newer. Clone the repository, enter its directory, and install from source:
 
+    git clone https://github.com/armidamini/chemi.git
+    cd chemi
     python -m pip install .
 
 For development and tests:
 
     python -m pip install -e ".[dev]"
     pytest
+
+The project is currently distributed as source on GitHub; a PyPI package release has not been published.
 
 ## Quick example
 
