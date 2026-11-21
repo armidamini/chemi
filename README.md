@@ -1,5 +1,7 @@
 # ChemEng Open Tools
 
+[![Tests](https://github.com/armidamini/chemi/actions/workflows/tests.yml/badge.svg)](https://github.com/armidamini/chemi/actions/workflows/tests.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A small open-source Python toolkit for transparent introductory chemical-engineering calculations. The package emphasizes explicit SI units, documented equations, input validation, and reproducible tests.
 
 ## Current capabilities
