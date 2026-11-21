@@ -30,3 +30,12 @@ Pump calculations use the efficiency supplied by the caller and do not model mot
 ## License
 
 MIT. See LICENSE.
+
+## Documentation and contribution
+
+- [Equations, methods, references, and limitations](docs/equations-and-methods.md)
+- [Changelog](CHANGELOG.md)
+- [Contribution guidelines](CONTRIBUTING.md)
+- [Issue templates](https://github.com/armidamini/chemi/issues/new/choose)
+
+Please report reproducible issues with units and non-confidential example data. All engineering calculations should be independently reviewed before practical use.
