@@ -11,8 +11,12 @@ def _finite(name: str, value: float) -> float:
 
 
 def celsius_to_kelvin(celsius: float) -> float:
-    """Convert degrees Celsius to kelvin."""
-    return _finite("celsius", celsius) + 273.15
+    """Convert degrees Celsius to kelvin; reject temperatures below 0 K."""
+    value = _finite("celsius", celsius)
+    kelvin = value + 273.15
+    if kelvin < 0.0:
+        raise ValueError("temperature cannot be below absolute zero")
+    return kelvin
 
 
 def kelvin_to_celsius(kelvin: float) -> float:
