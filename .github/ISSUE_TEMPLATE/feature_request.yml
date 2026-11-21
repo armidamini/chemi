@@ -1,0 +1,26 @@
+name: Feature request
+description: Suggest a transparent engineering calculation or improvement
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: What engineering task should this help with?
+    validations:
+      required: true
+  - type: textarea
+    id: equation
+    attributes:
+      label: Equation and authoritative reference
+      description: Provide the proposed equation, units, assumptions, and a reliable source.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Suggested validation cases
+      description: Include reference examples or expected values where possible.
+    validations:
+      required: false
