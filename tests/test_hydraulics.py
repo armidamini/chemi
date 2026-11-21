@@ -19,7 +19,7 @@ def test_auto_method_rejects_transition_range():
 
 
 def test_colebrook_white_reference_case():
-    assert darcy_friction_factor(100000.0, 0.0002, method="colebrook") == pytest.approx(0.0213, rel=0.015)
+    assert darcy_friction_factor(100000.0, 0.0002, method="colebrook") == pytest.approx(0.0190, rel=0.005)
 
 
 def test_swamee_jain_is_close_to_colebrook():
