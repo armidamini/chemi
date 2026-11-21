@@ -60,6 +60,8 @@ This educational software is not a substitute for engineering review, validated 
 - [Reproducible pipe-flow example](examples/pipe_flow_example.py)
 - [Worked heat-exchanger example](examples/heat_exchanger_example.py)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Support and reporting](SUPPORT.md)
+- [Pull request checklist](.github/pull_request_template.md)
 - [Changelog](CHANGELOG.md)
 - [Contribution guidelines](CONTRIBUTING.md)
 - [Issue templates](https://github.com/armidamini/chemi/issues/new/choose)
