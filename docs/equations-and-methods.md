@@ -76,3 +76,34 @@ where \(Q\) is volumetric flow (m³/s) and \(\eta\) is the supplied overall pump
 ## Scope and safety
 
 These are introductory calculations for idealized pipe flow. Real systems may require property models, elevation and fitting losses, network interactions, transient analysis, multiphase or compressible-flow treatment, uncertainty analysis, and applicable engineering codes. Validate inputs and independently review any result before using it in design, operation, or safety-critical work.
+
+
+## Sensible heat duty
+
+For a stream with constant specific heat capacity over the temperature interval:
+
+\\[
+Q=\\dot m C_p(T_{out}-T_{in})
+\\]
+
+The function returns watts. Positive duty indicates heat added to the stream; negative duty indicates cooling. The model assumes constant heat capacity and does not account for phase change, reaction heat, or heat loss to the surroundings.
+
+## Log-mean temperature difference
+
+For two positive terminal temperature differences:
+
+\\[
+\\Delta T_{lm}=\\frac{\\Delta T_1-\\Delta T_2}{\\ln(\\Delta T_1/\\Delta T_2)}
+\\]
+
+When the two differences are equal, the limiting value is that common difference. The function rejects zero or negative terminal differences; it does not apply shell-and-tube correction factors.
+
+## Idealized heat-exchanger area
+
+For a specified duty, overall heat-transfer coefficient, and LMTD:
+
+\\[
+A=\\frac{|Q|}{U\\Delta T_{lm}}
+\\]
+
+The current area function accepts a nonnegative duty and returns square metres. It does not include fouling, correction factors, design margins, mechanical constraints, or detailed exchanger rating.
