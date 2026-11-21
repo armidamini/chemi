@@ -7,10 +7,10 @@ This document records the equations implemented by ChemEng Open Tools and the as
 For a Newtonian fluid in a circular pipe:
 
 \[
-\\mathrm{Re}=\\frac{\\rho |v|D}{\\mu}
+\mathrm{Re}=\frac{\rho |v|D}{\mu}
 \]
 
-where \\(\\rho\\) is density (kg/m³), \\(v\\) is average velocity (m/s), \\(D\\) is internal diameter (m), and \\(\\mu\\) is dynamic viscosity (Pa·s). Reynolds number is dimensionless.
+where \(\rho\) is density (kg/m³), \(v\) is average velocity (m/s), \(D\) is internal diameter (m), and \(\mu\) is dynamic viscosity (Pa·s). Reynolds number is dimensionless.
 
 ## Darcy friction factor
 
@@ -21,7 +21,7 @@ The package returns the Darcy friction factor. It is four times the Fanning fric
 For fully developed laminar flow in a circular pipe:
 
 \[
-f_D=\\frac{64}{\\mathrm{Re}}
+f_D=\frac{64}{\mathrm{Re}}
 \]
 
 ### Turbulent regime: Colebrook–White
@@ -29,17 +29,17 @@ f_D=\\frac{64}{\\mathrm{Re}}
 For turbulent flow, the implicit Colebrook–White relation is solved numerically:
 
 \[
-\\frac{1}{\\sqrt{f_D}}=-2\\log_{10}\\left(\\frac{\\varepsilon/D}{3.7}+\\frac{2.51}{\\mathrm{Re}\\sqrt{f_D}}\\right)
+\frac{1}{\sqrt{f_D}}=-2\log_{10}\left(\frac{\varepsilon/D}{3.7}+\frac{2.51}{\mathrm{Re}\sqrt{f_D}}\right)
 \]
 
-where \\(\\varepsilon/D\\) is relative roughness. The implementation uses a bracketed bisection solver and raises an error if it cannot establish a bracket or converge.
+where \(\varepsilon/D\) is relative roughness. The implementation uses a bracketed bisection solver and raises an error if it cannot establish a bracket or converge.
 
 ### Turbulent regime: Swamee–Jain
 
 The explicit approximation implemented for comparison is:
 
 \[
-f_D=\\frac{0.25}{\\left[\\log_{10}\\left(\\frac{\\varepsilon/D}{3.7}+\\frac{5.74}{\\mathrm{Re}^{0.9}}\\right)\\right]^2}
+f_D=\frac{0.25}{\left[\log_{10}\left(\frac{\varepsilon/D}{3.7}+\frac{5.74}{\mathrm{Re}^{0.9}}\right)\right]^2}
 \]
 
 ### Regime handling
@@ -51,7 +51,7 @@ The automatic method uses the laminar expression for Re ≤ 2300, rejects 2300 <
 For a straight, constant-diameter pipe:
 
 \[
-\\Delta P=f_D\\frac{L}{D}\\frac{\\rho v^2}{2}
+\Delta P=f_D\frac{L}{D}\frac{\rho v^2}{2}
 \]
 
 The result is pressure loss in pascals. The current function does not add minor losses, static elevation changes, acceleration terms, or compressibility effects.
@@ -61,17 +61,17 @@ The result is pressure loss in pascals. The current function does not add minor 
 For a specified pressure rise/loss and volumetric flow:
 
 \[
-P_{hyd}=\\Delta P Q,\\qquad P_{shaft}=\\frac{P_{hyd}}{\\eta}
+P_{hyd}=\Delta P Q,\qquad P_{shaft}=\frac{P_{hyd}}{\eta}
 \]
 
-where \\(Q\\) is volumetric flow (m³/s) and \\(\\eta\\) is the supplied overall pump efficiency as a fraction between zero and one. Motor and drive efficiencies are not modeled separately.
+where \(Q\) is volumetric flow (m³/s) and \(\eta\) is the supplied overall pump efficiency as a fraction between zero and one. Motor and drive efficiencies are not modeled separately.
 
 ## Sensible heat duty
 
 For a stream with constant specific heat capacity over the temperature interval:
 
 \[
-\\dot Q=\\dot m C_p(T_{out}-T_{in})
+\dot Q=\dot m C_p(T_{out}-T_{in})
 \]
 
 The function returns watts. Positive duty indicates heat added to the stream; negative duty indicates cooling. The model assumes constant heat capacity and does not account for phase change, reaction heat, or heat loss to the surroundings.
@@ -81,7 +81,7 @@ The function returns watts. Positive duty indicates heat added to the stream; ne
 For two positive terminal temperature differences in a parallel- or counterflow heat exchanger:
 
 \[
-\\Delta T_{lm}=\\frac{\\Delta T_1-\\Delta T_2}{\\ln(\\Delta T_1/\\Delta T_2)}
+\Delta T_{lm}=\frac{\Delta T_1-\Delta T_2}{\ln(\Delta T_1/\Delta T_2)}
 \]
 
 When the two differences are equal, the limiting value is that common difference. The function accepts the two terminal differences directly; it does not infer flow arrangement or calculate them from four stream temperatures. The standard LMTD relation assumes suitable idealized conditions, including approximately constant overall heat-transfer coefficient and heat capacities and negligible heat loss. Other exchanger arrangements may require a correction factor.
@@ -91,7 +91,7 @@ When the two differences are equal, the limiting value is that common difference
 For a nonnegative heat duty, overall heat-transfer coefficient, and LMTD:
 
 \[
-A=\\frac{\\dot Q}{U\\Delta T_{lm}}
+A=\frac{\dot Q}{U\Delta T_{lm}}
 \]
 
 The function returns square metres. It does not include fouling, correction factors, design margins, mechanical constraints, or detailed exchanger rating.
