@@ -9,7 +9,12 @@ description = "Transparent introductory chemical engineering calculation tools"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
-keywords = ["chemical-engineering", "hydraulics", "fluid-mechanics", "engineering"]
+keywords = ["chemical-engineering", "hydraulics", "fluid-mechanics", "heat-transfer", "engineering"]
+
+[project.urls]
+Homepage = "https://github.com/armidamini/chemi"
+Repository = "https://github.com/armidamini/chemi"
+Issues = "https://github.com/armidamini/chemi/issues"
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Science/Research",
