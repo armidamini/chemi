@@ -39,3 +39,6 @@ MIT. See LICENSE.
 - [Issue templates](https://github.com/armidamini/chemi/issues/new/choose)
 
 Please report reproducible issues with units and non-confidential example data. All engineering calculations should be independently reviewed before practical use.
+
+- [Reproducible pipe-flow example](examples/pipe_flow_example.py)
+- [Testing and validation approach](docs/validation-and-quality.md)
